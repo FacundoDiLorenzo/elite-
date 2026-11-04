@@ -14,4 +14,6 @@ Abrí `index.html` en el navegador, o serví la carpeta:
 python3 -m http.server 8000
 ```
 
-Las imágenes y el logo se cargan por ahora desde el sitio actual (`entrenaconelite.com/wp-content/...`). Antes de publicar conviene copiarlas a `assets/img/` (idealmente en WebP) y actualizar las rutas.
+Identidad tomada del sitio actual: rosa `#e6005c`, verde `#00a98f`, fondo `#121212`, títulos en Kanit Black Italic y texto en Montserrat.
+
+Las fotos y el logo de `assets/img/` están recortados de capturas de pantalla, así que tienen baja resolución. Antes de publicar conviene reemplazarlos por los originales en alta calidad, con los mismos nombres de archivo.
