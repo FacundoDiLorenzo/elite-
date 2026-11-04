@@ -21,6 +21,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,600;0,800;1,700;1,800;1,900&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
+  <script>document.documentElement.classList.add("js")</script>
 
   <script type="application/ld+json">
   {
@@ -72,137 +73,118 @@
   </header>
 
   <main id="main">
-    <!-- HERO -->
     <section class="hero">
       <div class="hero__pattern" aria-hidden="true">
-        <span>NO LIMITS / NO LIMITS / NO LIMITS / NO LIMITS /</span>
-        <span>NO LIMITS / NO LIMITS / NO LIMITS / NO LIMITS /</span>
-        <span>NO LIMITS / NO LIMITS / NO LIMITS / NO LIMITS /</span>
-        <span>NO LIMITS / NO LIMITS / NO LIMITS / NO LIMITS /</span>
-        <span>NO LIMITS / NO LIMITS / NO LIMITS / NO LIMITS /</span>
-        <span>NO LIMITS / NO LIMITS / NO LIMITS / NO LIMITS /</span>
+        <div class="hero__row"><span>NO LIMITS / NO LIMITS / NO LIMITS / NO LIMITS / </span><span>NO LIMITS / NO LIMITS / NO LIMITS / NO LIMITS / </span></div>
+        <div class="hero__row"><span>NO LIMITS / NO LIMITS / NO LIMITS / NO LIMITS / </span><span>NO LIMITS / NO LIMITS / NO LIMITS / NO LIMITS / </span></div>
+        <div class="hero__row"><span>NO LIMITS / NO LIMITS / NO LIMITS / NO LIMITS / </span><span>NO LIMITS / NO LIMITS / NO LIMITS / NO LIMITS / </span></div>
+        <div class="hero__row"><span>NO LIMITS / NO LIMITS / NO LIMITS / NO LIMITS / </span><span>NO LIMITS / NO LIMITS / NO LIMITS / NO LIMITS / </span></div>
+        <div class="hero__row"><span>NO LIMITS / NO LIMITS / NO LIMITS / NO LIMITS / </span><span>NO LIMITS / NO LIMITS / NO LIMITS / NO LIMITS / </span></div>
+        <div class="hero__row"><span>NO LIMITS / NO LIMITS / NO LIMITS / NO LIMITS / </span><span>NO LIMITS / NO LIMITS / NO LIMITS / NO LIMITS / </span></div>
       </div>
       <div class="container hero__grid">
         <div class="hero__content">
-          <p class="eyebrow">Centro deportivo en Málaga</p>
-          <h1 class="hero__title">Bienvenido<br>a <mark>Élite</mark></h1>
-          <p class="hero__lead">Entrenamiento personal y funcional en grupos reducidos, recuperación de lesiones, fisioterapia y nutrición. Licenciados y graduados en Ciencias de la Actividad Física y el Deporte, contigo 360°.</p>
+          <h1 class="hero__title">
+            <span class="line"><span>Bienvenido</span></span>
+            <span class="line"><span>a <mark>Élite</mark></span></span>
+          </h1>
+          <p class="hero__lead">Entrenamiento personal y funcional en grupos reducidos, recuperación de lesiones, fisioterapia y nutrición en Málaga. Con licenciados y graduados en Ciencias de la Actividad Física y el Deporte.</p>
           <div class="hero__actions">
             <a class="btn btn--accent" href="https://wa.me/34656501317?text=Hola%2C%20quiero%20informaci%C3%B3n%20para%20entrenar%20en%20%C3%89lite" target="_blank" rel="noopener">Reserva tu primera sesión</a>
             <a class="btn btn--ghost" href="#servicios">Ver servicios</a>
           </div>
         </div>
-        <div class="hero__photo">
-          <img src="assets/img/centro.webp" alt="Entrenador de Élite trabajando con bandas en el centro" fetchpriority="high">
-          <span class="hero__badge">No limits</span>
+        <figure class="hero__photo">
+          <img src="assets/img/centro.webp" alt="Entrenador de Élite trabajando con bandas en el centro" width="627" height="501" fetchpriority="high">
+          <figcaption class="hero__badge">No limits</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section intro">
+      <div class="container intro__grid">
+        <h2 class="h2">Mucho más que un <span class="hl">gimnasio</span>.</h2>
+        <div class="intro__text">
+          <p>Élite nace de la ilusión de crear un espacio donde conectar a profesionales del entrenamiento con personas con ganas de mejorar su forma física, prevenir o recuperarse de una lesión. Trabajamos tanto con deportistas de élite como con quienes solo quieren sentirse mejor.</p>
+          <dl class="pillars">
+            <div><dt>Profesionales</dt><dd>Licenciados y graduados en actividad física y deporte.</dd></div>
+            <div><dt>Grupos reducidos</dt><dd>Atención real y técnica corregida en cada sesión.</dd></div>
+            <div><dt>Soporte 360°</dt><dd>Entreno, fisioterapia y nutrición bajo un mismo techo.</dd></div>
+          </dl>
         </div>
       </div>
     </section>
 
-    <!-- INTRO -->
-    <section class="section intro">
-      <div class="container intro__grid">
-        <div>
-          <p class="eyebrow">Conoce Élite</p>
-          <h2 class="h2">Mucho más que un <span class="hl">gimnasio</span>.</h2>
-        </div>
-        <div class="intro__text reveal">
-          <p>Élite nace de la ilusión de crear un espacio donde conectar a profesionales del entrenamiento con personas con ganas de mejorar su forma física, prevenir o recuperarse de una lesión. Trabajamos tanto con deportistas de élite como con quienes solo quieren sentirse mejor.</p>
-          <ul class="pillars">
-            <li><strong>Profesionales</strong><span>Titulados en actividad física, deporte y salud.</span></li>
-            <li><strong>Grupos reducidos</strong><span>Atención real y técnica corregida en cada sesión.</span></li>
-            <li><strong>Enfoque 360°</strong><span>Entreno, fisio y nutrición bajo un mismo techo.</span></li>
+    <section class="section services" id="servicios">
+      <div class="container">
+        <h2 class="h2 services__title">Nuestros <span class="hl">servicios</span></h2>
+        <div class="services__grid">
+          <div class="services__preview" aria-hidden="true">
+            <div class="services__frame is-active" data-svc="personal"><img src="assets/img/entrenamiento-personal.webp" alt="Entrenadora corrigiendo la postura de una clienta" width="505" height="632"></div>
+            <div class="services__frame" data-svc="funcional"><img src="assets/img/entrenamiento-funcional.webp" alt="Cliente haciendo curl de bíceps con barra" width="505" height="632"></div>
+            <div class="services__frame" data-svc="lesiones"><img src="assets/img/centro.webp" alt="Entrenador trabajando con bandas elásticas" width="505" height="632"></div>
+            <div class="services__frame" data-svc="preparacion"><img src="assets/img/preparacion-fisica.webp" alt="Deportista entrenando con un sistema inercial" width="505" height="632"></div>
+            <div class="services__frame" data-svc="fisio"><img src="assets/img/fisioterapia.webp" alt="Fisioterapeuta tratando el hombro de un paciente" width="505" height="632"></div>
+            <div class="services__frame" data-svc="nutricion"><span class="svc__graphic" aria-hidden="true">Nutri<br>ción</span></div>
+          </div>
+          <ul class="services__list">
+            <li class="svc is-active" data-svc="personal" tabindex="0">
+              <h3 class="svc__name">Entrenamiento personal</h3>
+              <p class="svc__text">Sesiones uno a uno con tu entrenador, que se encarga de la prescripción, el seguimiento y la corrección de cada entrenamiento.</p>
+              <div class="svc__media"><img loading="lazy" src="assets/img/entrenamiento-personal.webp" alt="Entrenadora corrigiendo la postura de una clienta" width="505" height="632"></div>
+            </li>
+            <li class="svc" data-svc="funcional" tabindex="0">
+              <h3 class="svc__name">Entrenamiento funcional</h3>
+              <p class="svc__text">Fuerza y alta intensidad en grupos reducidos: patrones básicos de movimiento y ejercicios multiarticulares en formato HIIT.</p>
+              <div class="svc__media"><img loading="lazy" src="assets/img/entrenamiento-funcional.webp" alt="Cliente haciendo curl de bíceps con barra" width="505" height="632"></div>
+            </li>
+            <li class="svc" data-svc="lesiones" tabindex="0">
+              <h3 class="svc__name">Recuperación de lesiones</h3>
+              <p class="svc__text">Readaptador y fisioterapeuta trabajan juntos para que vuelvas a tu actividad con garantías y sin recaídas.</p>
+              <div class="svc__media"><img loading="lazy" src="assets/img/centro.webp" alt="Entrenador trabajando con bandas elásticas" width="505" height="632"></div>
+            </li>
+            <li class="svc" data-svc="preparacion" tabindex="0">
+              <h3 class="svc__name">Preparación física</h3>
+              <p class="svc__text">Sistemas inerciales y cuantificación de la carga con dispositivos electrónicos. Pensada para deportistas profesionales y para quien la necesite.</p>
+              <div class="svc__media"><img loading="lazy" src="assets/img/preparacion-fisica.webp" alt="Deportista entrenando con un sistema inercial" width="505" height="632"></div>
+            </li>
+            <li class="svc" data-svc="fisio" tabindex="0">
+              <h3 class="svc__name">Fisioterapia</h3>
+              <p class="svc__text">Problemas neuro-músculo-esqueléticos, patología de columna, lesiones deportivas y dolor crónico complejo.</p>
+              <div class="svc__media"><img loading="lazy" src="assets/img/fisioterapia.webp" alt="Fisioterapeuta tratando el hombro de un paciente" width="505" height="632"></div>
+            </li>
+            <li class="svc" data-svc="nutricion" tabindex="0">
+              <h3 class="svc__name">Nutrición y dietética</h3>
+              <p class="svc__text">Reeducación de hábitos y planes de alimentación personalizados, coordinados con tu entrenamiento.</p>
+              <div class="svc__media"><span class="svc__graphic" aria-hidden="true">Nutri<br>ción</span></div>
+            </li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- SERVICIOS -->
-    <section class="section services" id="servicios">
-      <div class="container">
-        <div class="section__head">
-          <p class="eyebrow">Nuestros servicios</p>
-          <h2 class="h2">Todo lo que necesitas para rendir y sentirte bien.</h2>
-        </div>
-        <div class="cards">
-          <article class="card reveal">
-            <div class="card__img"><img loading="lazy" src="assets/img/entrenamiento-personal.webp" alt="Entrenador guiando una sesión de entrenamiento personal"></div>
-            <div class="card__body">
-              <span class="card__num">01</span>
-              <h3>Entrenamiento personal</h3>
-              <p>Sesiones uno a uno adaptadas a tus objetivos. Tu entrenador se encarga de la programación, el seguimiento y la corrección técnica.</p>
-            </div>
-          </article>
-          <article class="card reveal">
-            <div class="card__img"><img loading="lazy" src="assets/img/entrenamiento-funcional.webp" alt="Grupo reducido haciendo entrenamiento funcional"></div>
-            <div class="card__body">
-              <span class="card__num">02</span>
-              <h3>Entrenamiento funcional</h3>
-              <p>Fuerza y alta intensidad en grupos reducidos, basados en patrones básicos de movimiento y ejercicios multiarticulares en formato HIIT.</p>
-            </div>
-          </article>
-          <article class="card reveal">
-            <div class="card__img"><img loading="lazy" src="assets/img/centro.webp" alt="Readaptación de una lesión con un especialista"></div>
-            <div class="card__body">
-              <span class="card__num">03</span>
-              <h3>Recuperación de lesiones</h3>
-              <p>Readaptador y fisioterapeuta trabajan juntos para que vuelvas a tu actividad con garantías y sin recaídas.</p>
-            </div>
-          </article>
-          <article class="card reveal">
-            <div class="card__img"><img loading="lazy" src="assets/img/preparacion-fisica.webp" alt="Deportista entrenando con sistemas inerciales"></div>
-            <div class="card__body">
-              <span class="card__num">04</span>
-              <h3>Preparación física</h3>
-              <p>Rendimiento con sistemas inerciales y control electrónico de cargas, orientado sobre todo a deportistas profesionales.</p>
-            </div>
-          </article>
-          <article class="card reveal">
-            <div class="card__img"><img loading="lazy" src="assets/img/fisioterapia.webp" alt="Sesión de fisioterapia"></div>
-            <div class="card__body">
-              <span class="card__num">05</span>
-              <h3>Fisioterapia</h3>
-              <p>Tratamiento de problemas neuromusculoesqueléticos, con especial atención a patologías de columna, lesiones deportivas y dolor crónico.</p>
-            </div>
-          </article>
-          <article class="card reveal">
-            <div class="card__img card__img--graphic" aria-hidden="true"><span>Nutri<br>ción</span></div>
-            <div class="card__body">
-              <span class="card__num">06</span>
-              <h3>Nutrición y dietética</h3>
-              <p>Reeducación de hábitos y planes de alimentación personalizados, coordinados con tu entrenamiento.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- MÉTODO -->
     <section class="section method" id="metodo">
       <div class="container">
         <div class="section__head">
-          <p class="eyebrow">Cómo trabajamos</p>
-          <h2 class="h2">Un método claro, de la primera visita a tus resultados.</h2>
+          <h2 class="h2">Así <span class="hl">trabajamos</span></h2>
         </div>
         <ol class="steps">
-          <li class="step reveal"><span class="step__n">1</span><h3>Valoración</h3><p>Conocemos tu historial, tus objetivos y cómo te mueves.</p></li>
-          <li class="step reveal"><span class="step__n">2</span><h3>Plan a medida</h3><p>Diseñamos tu programa combinando entreno, fisio y nutrición si lo necesitas.</p></li>
-          <li class="step reveal"><span class="step__n">3</span><h3>Entrenamiento guiado</h3><p>Sesiones supervisadas con técnica corregida y cargas controladas.</p></li>
-          <li class="step reveal"><span class="step__n">4</span><h3>Seguimiento</h3><p>Medimos tu progreso y ajustamos el plan para que nunca te estanques.</p></li>
+          <li class="step"><span class="step__n">1</span><h3>Valoración</h3><p>Conocemos tu historial, tus objetivos y cómo te mueves.</p></li>
+          <li class="step"><span class="step__n">2</span><h3>Plan a medida</h3><p>Diseñamos tu programa combinando entreno, fisio y nutrición si lo necesitas.</p></li>
+          <li class="step"><span class="step__n">3</span><h3>Entrenamiento guiado</h3><p>Sesiones supervisadas con técnica corregida y cargas controladas.</p></li>
+          <li class="step"><span class="step__n">4</span><h3>Seguimiento</h3><p>Medimos tu progreso y ajustamos el plan para que nunca te estanques.</p></li>
         </ol>
       </div>
     </section>
 
-    <!-- CENTRO -->
     <section class="section center" id="centro">
       <div class="container center__grid">
-        <div class="center__media reveal">
+        <div class="center__media">
           <img loading="lazy" src="assets/img/entrenamiento-funcional.webp" alt="Entrenamiento de fuerza en las instalaciones de Élite">
         </div>
-        <div class="center__text reveal">
-          <p class="eyebrow">Nuestro centro</p>
-          <h2 class="h2">Un espacio pensado para entrenar mejor.</h2>
-          <p>Instalaciones equipadas con tecnología para el entrenamiento y la valoración, y con los más altos estándares de salud, seguridad y limpieza.</p>
+        <div class="center__text">
+          <h2 class="h2">Nuestro centro de <span class="hl">entrenamiento</span></h2>
+          <p>Lo hemos construido con la más alta tecnología y cumpliendo siempre unos estándares elevados de salud, seguridad y limpieza, para que tu experiencia sea la mejor posible.</p>
           <ul class="checks">
             <li>Material de fuerza y entrenamiento funcional</li>
             <li>Sistemas inerciales y control electrónico de cargas</li>
@@ -213,7 +195,6 @@
       </div>
     </section>
 
-    <!-- CTA -->
     <section class="cta">
       <div class="container cta__inner">
         <h2 class="cta__title">Entrena con <span>Élite</span></h2>
@@ -225,12 +206,10 @@
       </div>
     </section>
 
-    <!-- CONTACTO -->
     <section class="section contact" id="contacto">
       <div class="container contact__grid">
         <div>
-          <p class="eyebrow">Contacto</p>
-          <h2 class="h2">Ven a conocernos.</h2>
+          <h2 class="h2">Ven a <span class="hl">conocernos</span></h2>
           <dl class="contact__list">
             <div><dt>Dirección</dt><dd><a href="https://maps.google.com/?q=Av.+de+Sor+Teresa+Prat,+85,+29004+M%C3%A1laga" target="_blank" rel="noopener">Av. de Sor Teresa Prat, 85<br>29004 Málaga</a></dd></div>
             <div><dt>Teléfono</dt><dd><a href="tel:+34951384779">+34 951 384 779</a><br><a href="tel:+34656501317">+34 656 501 317</a></dd></div>

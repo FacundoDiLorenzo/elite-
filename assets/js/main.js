@@ -1,39 +1,66 @@
-// Élite — interacciones mínimas, sin dependencias
+// Élite — interacciones, sin dependencias
 (() => {
-  const nav = document.querySelector('.nav');
-  const toggle = document.querySelector('.nav__toggle');
-  const menu = document.getElementById('menu');
+  const root = document.documentElement;
+  root.classList.add('js');
 
-  // Fondo del header al hacer scroll
-  const onScroll = () => nav.classList.toggle('is-scrolled', window.scrollY > 24);
-  onScroll();
-  window.addEventListener('scroll', onScroll, { passive: true });
+  // Secuencia de entrada del hero: se lanza en el siguiente frame para que el estado inicial se pinte
+  const start = () => requestAnimationFrame(() => requestAnimationFrame(() => root.classList.add('is-loaded')));
+  if (document.fonts && document.fonts.ready) {
+    // Espera las fuentes (como mucho 600 ms) para que el título no cambie de forma mientras entra
+    Promise.race([document.fonts.ready, new Promise((r) => setTimeout(r, 600))]).then(start);
+  } else {
+    start();
+  }
 
   // Menú móvil
+  const toggle = document.querySelector('.nav__toggle');
+  const menu = document.getElementById('menu');
   const setMenu = (open) => {
     toggle.setAttribute('aria-expanded', String(open));
     toggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
     menu.classList.toggle('is-open', open);
-    nav.classList.toggle('is-scrolled', open || window.scrollY > 24);
   };
   toggle.addEventListener('click', () => setMenu(toggle.getAttribute('aria-expanded') !== 'true'));
   menu.addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false); });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menu.classList.contains('is-open')) { setMenu(false); toggle.focus(); }
+  });
 
-  // Animación de aparición
-  const items = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window) {
+  // Pausar el patrón NO LIMITS cuando el hero no está a la vista
+  const hero = document.querySelector('.hero');
+  if (hero && 'IntersectionObserver' in window) {
+    new IntersectionObserver(([entry]) => hero.classList.toggle('is-offscreen', !entry.isIntersecting)).observe(hero);
+  }
+
+  // Servicios: la vista previa sigue al servicio activo (hover, foco o scroll)
+  const items = [...document.querySelectorAll('.svc')];
+  const frames = [...document.querySelectorAll('.services__frame')];
+  const activate = (key) => {
+    items.forEach((el) => el.classList.toggle('is-active', el.dataset.svc === key));
+    frames.forEach((el) => el.classList.toggle('is-active', el.dataset.svc === key));
+  };
+  items.forEach((el) => {
+    el.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') activate(el.dataset.svc); });
+    el.addEventListener('focus', () => activate(el.dataset.svc));
+  });
+  if ('IntersectionObserver' in window && window.matchMedia('(min-width: 861px)').matches) {
     const io = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+      entries.forEach((entry) => { if (entry.isIntersecting) activate(entry.target.dataset.svc); });
+    }, { rootMargin: '-45% 0px -50% 0px' });
     items.forEach((el) => io.observe(el));
-  } else {
-    items.forEach((el) => el.classList.add('is-visible'));
+  }
+
+  // Marca en el menú la sección visible
+  const links = [...document.querySelectorAll('.nav__links a[href^="#"]')];
+  const sections = links.map((a) => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  if ('IntersectionObserver' in window) {
+    const so = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        links.forEach((a) => a.setAttribute('aria-current', String(a.getAttribute('href') === '#' + entry.target.id)));
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    sections.forEach((s) => so.observe(s));
   }
 
   // Año del footer
