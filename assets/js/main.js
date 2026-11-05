@@ -26,10 +26,25 @@
     if (e.key === 'Escape' && menu.classList.contains('is-open')) { setMenu(false); toggle.focus(); }
   });
 
-  // Pausar el patrón NO LIMITS cuando el hero no está a la vista
-  const hero = document.querySelector('.hero');
-  if (hero && 'IntersectionObserver' in window) {
-    new IntersectionObserver(([entry]) => hero.classList.toggle('is-offscreen', !entry.isIntersecting)).observe(hero);
+  // Pausar las animaciones continuas (patrón NO LIMITS y franja) cuando no están a la vista
+  document.querySelectorAll('.hero, .band').forEach((el) => {
+    if (!('IntersectionObserver' in window)) return;
+    new IntersectionObserver(([entry]) => el.classList.toggle('is-offscreen', !entry.isIntersecting)).observe(el);
+  });
+
+  // Revelados de una sola vez (método y foto del centro)
+  const reveals = document.querySelectorAll('[data-reveal]');
+  if ('IntersectionObserver' in window) {
+    const ro = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-in');
+        ro.unobserve(entry.target);
+      });
+    }, { threshold: 0.3 });
+    reveals.forEach((el) => ro.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('is-in'));
   }
 
   // Servicios: la vista previa sigue al servicio activo (hover, foco o scroll)

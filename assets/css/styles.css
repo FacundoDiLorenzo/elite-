@@ -40,6 +40,7 @@ body {
   -webkit-tap-highlight-color: transparent;
   overflow-x: clip;
   caret-color: var(--magenta);
+  touch-action: manipulation;
 }
 img { max-width: 100%; display: block; height: auto; }
 a { color: inherit; text-underline-offset: .2em; }
@@ -306,7 +307,7 @@ html { scrollbar-color: #3a3a3a var(--bg); }
 .center { background: var(--bg-2); }
 .center__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 80px); align-items: center; }
 .center__media { border-radius: var(--radius); overflow: hidden; aspect-ratio: 4 / 5; background: var(--bg-3); }
-.center__media img { width: 100%; height: 100%; object-fit: cover; }
+.center__media img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
 .center__text > p { color: #e0e0e0; margin-top: 24px; font-size: 1.1rem; max-width: 56ch; }
 .checks { list-style: none; padding: 0; margin: 32px 0 0; display: grid; gap: 14px; }
 .checks li { display: flex; gap: 14px; align-items: flex-start; }
@@ -357,6 +358,41 @@ html { scrollbar-color: #3a3a3a var(--bg); }
 .js .wa-float { opacity: 0; transform: translateY(16px) scale(0.9); }
 .is-loaded .wa-float { opacity: 1; transform: none; transition: opacity 300ms ease 1200ms, transform 400ms var(--ease-arrive) 1200ms; }
 
+
+/* ---------- Franja de servicios en movimiento ---------- */
+.band { background: var(--magenta); overflow: hidden; border-block: 1px solid rgba(255,255,255,.12); }
+.band__track { display: flex; width: max-content; animation: drift 38s linear infinite; }
+.band.is-offscreen .band__track { animation-play-state: paused; }
+.band span {
+  display: inline-flex; align-items: center; gap: 28px; padding: 16px 0 16px 28px; white-space: nowrap;
+  font-family: var(--font-display); font-style: italic; font-weight: 900; text-transform: uppercase; font-size: 1.15rem; letter-spacing: .01em;
+}
+.band span::after { content: ""; width: 14px; height: 14px; background: var(--ink); transform: skewX(-12deg); }
+
+/* ---------- Revelados con un propósito ---------- */
+/* Método: la línea se dibuja de izquierda a derecha y los pasos llegan en orden, explicando la secuencia */
+.js .steps[data-reveal]::before { transform: scaleX(0); transform-origin: left; }
+.js .steps[data-reveal] .step__n { opacity: 0; transform: skewX(-10deg) scale(0.9); }
+.js .steps[data-reveal] .step h3, .js .steps[data-reveal] .step p { opacity: 0; transform: translateY(8px); }
+.js .steps[data-reveal].is-in::before { transform: none; transition: transform 1100ms var(--ease-in-out); }
+.js .steps[data-reveal].is-in .step__n { opacity: 1; transform: skewX(-10deg); transition: opacity 300ms ease, transform 400ms var(--ease-arrive); }
+.js .steps[data-reveal].is-in .step h3, .js .steps[data-reveal].is-in .step p { opacity: 1; transform: none; transition: opacity 400ms ease, transform 500ms var(--ease-arrive); }
+.js .steps[data-reveal].is-in .step:nth-child(1) > * { transition-delay: 100ms; }
+.js .steps[data-reveal].is-in .step:nth-child(2) > * { transition-delay: 360ms; }
+.js .steps[data-reveal].is-in .step:nth-child(3) > * { transition-delay: 620ms; }
+.js .steps[data-reveal].is-in .step:nth-child(4) > * { transition-delay: 880ms; }
+@media (max-width: 860px) {
+  .js .steps[data-reveal]::before { transform: scaleY(0); transform-origin: top; }
+}
+/* Centro: la foto se descubre de abajo hacia arriba */
+.js .center__media[data-reveal] img { clip-path: inset(100% 0 0 0); transform: scale(1.08); }
+.js .center__media[data-reveal].is-in img { clip-path: inset(0 0 0 0); transform: none; transition: clip-path 900ms var(--ease-in-out), transform 1200ms var(--ease-arrive); }
+
+/* ---------- Detalles ---------- */
+.contact__list dd, .topbar { font-variant-numeric: tabular-nums; }
+.map iframe { transition: filter 400ms ease; }
+@media (hover: hover) and (pointer: fine) { .map:hover iframe { filter: none; } }
+
 /* ---------- Responsive general ---------- */
 @media (max-width: 860px) {
   .intro__grid, .center__grid, .contact__grid { grid-template-columns: 1fr; }
@@ -368,6 +404,10 @@ html { scrollbar-color: #3a3a3a var(--bg); }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .hero__row { animation: none; }
+  .band__track { animation: none; }
+  .js .steps[data-reveal]::before, .js .steps[data-reveal] .step__n, .js .steps[data-reveal] .step h3, .js .steps[data-reveal] .step p { transform: none; }
+  .js .steps[data-reveal] .step__n { transform: skewX(-10deg); }
+  .js .center__media[data-reveal] img { clip-path: none; transform: none; }
   .js .hero__title .line > span, .js .hero__lead, .js .hero__actions, .js .hero__badge, .js .wa-float { transform: none; }
   .js .hero__title mark { clip-path: none; }
   .js .hero__photo img { clip-path: polygon(14% 0, 100% 0, 86% 100%, 0 100%); }
