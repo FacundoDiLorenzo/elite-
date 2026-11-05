@@ -41,7 +41,7 @@
         entry.target.classList.add('is-in');
         ro.unobserve(entry.target);
       });
-    }, { threshold: 0.3 });
+    }, { threshold: 0.15, rootMargin: '0px 0px -20% 0px' });
     reveals.forEach((el) => ro.observe(el));
   } else {
     reveals.forEach((el) => el.classList.add('is-in'));
